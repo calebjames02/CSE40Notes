@@ -1,0 +1,181 @@
+10/1/24
+What is machine learning not
+
+There are different kinds of reasoning
+Taking existing knowledge to draw conclusions, make predictions, or construct explanations
+
+Deductive
+The conclusion you come up with is guaranteed to be true
+Starts with assertion of a general rule and proceeds to get more specific
+Moves from general rule to specific application
+If original assertions are true, then the conclusion must also be true
+If birds can fly ...
+... and Tweety is a bird ...
+... then Tweety can fly
+
+Common deductive rule called modus ponens
+if x -> y
+and x is true
+then Y is true
+
+x -> y is the conditional (or general rule)
+x is the antecedent (or specific observation)
+y is the consequent (or specific conclusion)
+
+In order to be valid, reasoning from premises to conclusion must be consistent
+
+This is invalid
+Birds can fly
+An airplane can fly
+Therefore, airplanes are birds.
+
+This is of the form
+P -> Q. Q. Therefore P
+This isn't guaranteed to be valid
+
+If premises are false, then reasoning is unsound and conclusion is not guaranteed
+Birds can fly. Sammy the slug is a bird. Therefore, Sammy can fly.
+Sammy can not fly, so this is not true because one of the premises is false
+Just having the right form isn't enough, need to ensure premises are true as well
+
+Unsound deductive reasoning is dangerous
+There is no such thing as drought in the West.
+California is in the West.
+California need never make plans to deal with a drought
+
+If either premise is false, than the conclusion can be false
+
+Deductive reasoning is not machine learning
+It is certainly useful to have guaranteed answers
+INdividuals can "reason" through deductive reasoning by drawing premises that they hadn't yet realized were true
+This doesn't increase the amount of human knowledge though (nonampliative)
+Everyone that comes from this reason is already implied
+Can't make predictions based on deductive reasoning
+Can't know the truths and facts about unobserved phenomena
+
+
+Inductive
+Begins with specific observations and proceeds to a generalized conclusion that is likely, but not certain, in light of accumulated evidence
+Going from specifics to general
+A lot of scientific research done this way
+Seek patterns, form a hypothesis to explain what has been seen
+
+Observations: It has rained for the past six days
+Conclusion: It will rain tomorrow
+
+Observations: I got a good grade on the last four assignments
+Conclusion: I will get a good grade on the next assignment
+
+Observations:
+X was true once (X1)
+X was true again (X2)
+X was true again ... (X3)
+Generalized Rule:
+X is always true (for all n, XN)
+Conclusion:
+X will be true in the future (for some future time t, XT)
+
+How many observations do we need?
+How similar do they have to be?
+(These are key questions of machine learning)
+
+Observation: Yesterday I parked at a meter and got a ticket.
+Conclusion: I will park at a meter today and get a ticket
+
+Inductive reasoning is only probable
+No amount of inductive evidence guarantees a conclusion
+Underlying conditions that led to specific observations in the past may change in the future
+
+Cogent Inductive Reasoning
+Inductive arguments are not as "sound" as deductive arguments
+We say they are cogent when it seems like the evidence is complete, relevant, and generally convincing
+Therefore the conclusion is probably true
+Weak inductive arguments are not cogent
+This reasoning is ampliative
+Can make predictions on unseen things using these argument
+Can make predictions on future events based on this data
+VERY IMPORTANT FORM OF MACHINE LEARNING
+
+
+Abductive
+Typically begins with incomplete set of observations and proceeds to the likeliest possible explanation for the set, given prior knowledge in form of causal rules
+Yields the kind of daily decision-making that does its best with information at hand, which is often incomplete
+
+Example: My lamp doesn't turn on when I turn the switch. The lightbulb is probably burned out
+
+Causal Rule (Prior Knowledge)
+X -> Y
+Observation
+Y
+Possible Cause
+Therefore (probably/possibly) X
+
+Causual Rule
+Lamps need working bubls to operate
+Observation
+My lamp won't turn on
+Possible cause
+The light bulb is probably burnt out
+
+Abduction is Causal Reasoning
+Uses prior knowledge about causality to formulate possible causes of observed information
+Causal rules describe the world forwards, from causes to effects
+Abductive reasoning proceeds baskwards, from effects to causes
+Inherently uncertain for many reasons
+	ANy given effect can have multiple causes
+	Observations are incomplete and many contain irrelevant information
+	Confounders (extraneous factors) may affect our observations
+	Easy to confuse correlation and causation
+
+Abductive reasoning can be ampliative, so it can be used for machine learning
+Wasn't the focus of machine learning for a while, but recently has become much more important
+
+There is nothing like cogent inductive or modus ponens for abductive reasoning
+It is partially based on the intuition and judgement of the one observing the effects
+
+The abductive process can be creative, intuitive, and even revolutionary
+Einstein's work involved a leap of imagination and visualization that scarcely seemed warranted by mere observations
+
+
+You can get the same conclusion from each method of reasoning, it is all about what knowledge and the process of how you used it that distinguishes the types of reasoning
+
+Deductive - Guaranteed conclsuion
+Inductive - Likely conclusion
+Adbuctive - Taking your best shot
+
+Deductive - Not machine learning
+Inductive - Machine learning
+Abductive - Causal reasoning (can be used for machine learning)
+
+Machine learning isn't real learning
+If you learn to play a video game well, you can play well even if the screen is rotated
+The machine is only trained by "looking" straight at the screen, in less you account for rotation
+
+Machine learning is often called that due to marketing
+Artifical intelligence isn't intelligence and machine learning isn't learning
+The word "learning" in the term is used by analogy with the learning in animals rather than literally
+
+A typical machine learning algorithm finds a mathematical formula, which, when applied to a collection of inputs ("training data") produces the desired outputs
+The formula also generates correct outputs for most other inputs (distinct from training data) on the condition that those inputs come from same or similar statistical distribution
+
+Machine Learning History
+Arther Samuel of IBM developed a computer program for playing checkers in the 1950s
+He coined the term ML in 1952
+Program chose its next move using a minimax strategy, which eventually evolved into the minimax algorithm
+Then developed rote learning, the program recorder all positions it had already seen and whether the game was a win/loss/draw
+
+1943, McCollach and Pitts propsed the first artifical neuron
+1957, Frank Rosenblatt (cornell aeronautical laboratory) combined their moden of neurons with Arthur Samuel's machine learning effors and created the perceptron
+Initially planned as a machine, not a program
+Described as first successful neuro-computer, Mark 1 perceptron ended in broken expectations
+Could not recognize many kinds of faces (which was what it was for)
+
+Phases
+Concept Learning
+	Learning logically consistent hypothesis
+Staistical Learning (Late 80s, 90s)
+	Learn a hypothesis that maximizes probability
+Optimization Based (2000s)
+	Hypothesis minimizes some loss function
+Neural Inspired Learning (2010s)
+	Represent hypothesis as a neural network
