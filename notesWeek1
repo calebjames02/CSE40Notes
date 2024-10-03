@@ -179,3 +179,22 @@ Optimization Based (2000s)
 	Hypothesis minimizes some loss function
 Neural Inspired Learning (2010s)
 	Represent hypothesis as a neural network
+
+
+Machine Learning Categories
+Supervised Learning
+	Uses labeled examples of classes (types of things) to construct a classifier (model) that can make predicitions about future objects
+	Medical diagnosis: Identifying liver cancer cells from previously seen examples of cancerous and non-cancerous
+	Takes in data and labels and based on that info classifies new data that it is shown
+
+Unsupervised Learning
+	Organizes and analyzes unlabeled observations to identify new categories or clusters
+	Scientific discovery: Finding patterns of similarity in sky objects observed through a telescope
+	Takes in data and outputs groupings of similar things
+
+Reinforcement Learning
+	Uses delayed feedback about actions performed in some environment to learn the value of actions taken in specific contexts
+	Autonomous driving: Learning to control a car under slippery conditions
+	Does something, waits for a reward and based on that changes what it is doing
+
+

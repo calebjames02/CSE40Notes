@@ -1,0 +1,56 @@
+Different kinds of supervised ML
+Classification: - (This will be most of the focus of this class)
+Output one of a set of discrete labels
+yes/no, high/medium/low
+
+Regression:
+Output a real number
+Number between (-inf, +inf), (0, +inf)
+
+Ranking:
+Output a ranking, either ordinal (0.0, 1.0) or pairwise
+
+Machine Learning Goal
+Produce useful predictions on never-before-seen data
+
+Supervise Learning Framework: Optimization
+Trying to find a way to minimize losses based on previous data
+
+Input Data #1: Instances / Data
+All machine learning algorithms take data as input
+Most commonly, this data is input as feature vectors
+	Simply a vector (represented as an array) of features describing each example
+		(salary, education, debt, demographics, etc.)
+
+Notation:
+x is the input vector; x_i is the ith feature
+x_i is input vector; x_ij is the jth feature of the ith input vector
+
+Input Data #2: Labels
+A label is the correct classification (desired output) associated with a particular input feature vector
+
+Noation:
+1) x is input vector; y is output label
+2) x_i is input vector; y_i is output label
+Getting the labels is often a challenge
+There is typically a cost associated with getting labeled data
+
+Other representations are possible: images, graphs, text, etc.
+
+ML Outputs: Hypothesis
+This is used in a couple of ways in machine learning
+SImplest use is as the name for the mathematical function that we learn from data - that function is our hypothesis
+
+Loss Function
+Measures the difference between the output of the hypothesis h(x) and the desired output y, for a single observation
+You can think of it as measuring the error in hypothesis
+
+Simplest loss function
+If we're correct, then loss is 0
+If we're incorrect, then loss is 1
+Called 0/1 loss
+
+Accuracy counts (or averages) the number of correct outputs
+
+
+
