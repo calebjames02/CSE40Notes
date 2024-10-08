@@ -1,0 +1,62 @@
+10/8/24
+Name Pandas is derived from the word Panel Data - an econometrics term for multidimensional data
+Prior to Pandas, Python didn't have tools to support data analysis
+Pandas is what came along and solved that problem
+
+Two ways of making data frames
+Method 1 - Import data from a file
+Method 2 - Make it yourself
+
+Pandas quirks - Boolean selection
+
+Using pandas
+Checking for true
+frame[frame['column-name']]
+Checking for false
+frame[~frame['column-name']]
+
+Using Python
+Checking for true
+frame[frame['column-name] == True]
+Checking for true
+frame[frame['column-name] == False]
+
+All boolean data
+Both pandas and python work fine
+
+Boolean with missing values
+Pandas wants to make sure you are not inadvertently casting something to a value, flags the missing value and gives an error
+Python works fine, just ignores the missing value and doesn't tell you about it
+
+Boolean with mixed values (0 or 1)
+Pandas returns an error again, because you are trying to do a boolean operation on a non bool value
+Python just assumes the number is intended to be a boolean value which often isn't what is wanted
+
+Error estimization tests how well it generalizes over other data
+
+Most common approach
+Split data into training data and test data
+Find best hypothesis on training data
+Esimtate error on test data
+
+Typicall assume:
+Training and test data are drawn from some unknown distribution (but they are from the same distribution)
+Data is independent and identically distributed (i.i.d.)
+	Each item in the sample share same probability distribution and are independently drawn
+Label distribution in training and test data is balanced (equal numbers of positive and negative examples)
+Distribution P is stationary (does not change over time)
+
+Selection bias
+You only have the information about whether or not people pay the loan back if you give them the loan
+	Maybe someone who didn't get given a loan would have paid it back
+
+Model & Model Complexity
+They can be very simple, or super complex
+How can you determine which of these is better?
+
+Overfitting
+More complex model allows you to recognize more complex relationships
+There is a tradeoff: As your model complexity increases, your lowest possible training set error decreases as you would expect
+	At the same time the estimated data on the unseen error may get larger
+This is called overfitting the data
+Occurs when the model is so complex that it memorizes the data and doesn't truly learn how to interpret the data
