@@ -60,3 +60,90 @@ There is a tradeoff: As your model complexity increases, your lowest possible tr
 	At the same time the estimated data on the unseen error may get larger
 This is called overfitting the data
 Occurs when the model is so complex that it memorizes the data and doesn't truly learn how to interpret the data
+
+
+10/10/24
+False Negative
+Model gave negative test result, but you should have gotten a positive result
+Took a COVID test and says negative, but you really have COVID
+Quality control: faulty product passes through the cracks
+Software testing: Test designed to catch something has failed (e.g. a virus)
+Create two problems
+	False sense of security
+	Potentially dangerous situations may be missed
+
+False Positive
+Model gave positive result for a test, but should have gotten a negative result
+Cancer screen test comes back positive, but you don't have the disease
+Spam detector filters out real mail
+Can be worrisome, especially when it comes to medical tests
+
+Confusion matrix helps understand what errors are being made
+Counts TP, TN, FP, FN
+
+Accuracy: (TP + TN) / (TP + TN + FP + FN)
+Proportion of correct predictions
+Precision: TP / (TP + FP)
+Proportion of positive predictions that are actually correct
+Recall: TP / (TP + FN)
+Propertion of actual positive examples that are correct
+
+When a ML algorithm outputs value between 0 and 1 (often probability), we can convert probability to classification using threshold t
+y' = 1 if h(x) >= t, 0 otherwise
+
+Where the threshold is set influences the types of errors that will occur
+Threshold commonly set at 0.5
+
+Is threshold ever a range?
+Do you do kind of trial and error to find best range?
+
+ROC curve (receiver operating characteristic curve)
+Graph showing true positive rate versus false positive rate
+True Positive Rate(TPR) = TP / (TP + FN)
+False Positive Rate (FPR) = FP / (FP + TN)
+
+Another approach is to summarize the graph into a single number to capture how good the model is at all different thresholds
+
+AUC (Area Under the ROC Curve)
+Probability that the model ranks a random positive example more highly than a random negative example
+Values range from 0 to 1
+Model whose predictions are 100% wrong has AUC of 0.0, 100% correct has an AUC of 1.0
+
+AUC desirable for two reasons
+Scale invariant
+	Measures how well predictions are ranked, rather than their absolutes
+Classification-threshold-invariant
+	Measured quality of model's predictiosn irrespcitve of what classificiation threshold is chosen
+
+Caveats
+Scale invariant not always valuable
+
+What else can go wrong?
+Challenges in formulating ML problems
+Alignment problem
+Very important that formulation of supervised machine learning problem matches what you really want to have happen in the real world
+When people first started using ML to optimize search engines, they wanted to predict how relevant a webpage was based on how many users clicked on it
+	Called maximizing click-through-rate
+Clicking isn't the same as relevance
+This led to clickbait, put something that gets a lot of people to click on it and that will raise the ranking of a webpage and get more people to see it
+If your optimization algorithm chooses the wrong metric it can lead to problems
+Twitter classifies thing by number of retweets
+A harassing tweet would get a lot of retweets but the victims response might not have as many retweets, so the harasser would show up higher than the victim
+
+Plausiblity problem
+Is something really plausible
+Can an image be used to tell you if someone is a criminal or not
+Absurd to think that you can take pixels from an image and map that to someone being a criminal or not
+Mapping from features to labels must pass the "smell test"
+Should be pluasible scientific connection between input features and output label
+If there is not, no matter how good hypothesis is you should reject it
+
+
+Regular Expressions
+Also called "regexp" or "regex" are patterns that let you find matching text
+Like mathematical expressions for text
+Start small and grow from there
+
+import re
+text = 'a = 9, b = 8'
+regex = r'a = (\d+), b = (\d+)'
