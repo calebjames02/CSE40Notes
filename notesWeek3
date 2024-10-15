@@ -1,0 +1,108 @@
+10/15/24
+Two interpreations of probability
+Bayesian:
+	Specifies the degree of uncertainty that the user has about an event
+	Sometimes referred to as "subjective probability" or "degree of belief"
+	Based on what the person thinks
+
+Frequentist:
+	Considers relative frequencies of events of interest to the toal number of events that occured
+
+Basic math behind both ways of thinking is the same
+
+Terminology:
+	Sample Space: Set of all possible (disjoint) outcomes of an experiment
+		In a single coin toss, with heads h and tails t, the sample space is {h, t}
+		Two coin tosses have a sample space of {hh, ht, th, tt}
+	Event: Subset of outcomes
+		Let E_h be the event that at least one coin was heads
+	Probability:
+		Probability of an outcome o in the sample space S is a number p between 0 and 1 that measured the likelihood that o will occur on a single trial of the random experiment
+		p = 0 corresponds to outcome o being impossible and p = 1corresponds to o being certain
+		Probability of event is simply the sum of the probabilites of the outcomes
+
+Probability of any event must be in the range [0, 1]
+Total probability over all of the outcomes in the sample space has to sum to one
+
+A random variable is a mapping of outcomes in the sample space
+Introduce random variable X, which is the number of heads into the coin example
+X(hh) = 2, X(ht) = 1, X(th) = 1, X(tt) = 0
+
+Random variables are things we are going to be interested in
+R = Is it raining?
+D = How long will it take to drive to work?
+
+Denote random variables with capital letters
+R in {true, false}
+D in [0, infinity)
+
+Kinds of probability spaces and distributions
+Discrete: Finite set of possible outcomes (will focus in this mainly in ML)
+Continuous: Infinite set of possible outcomes
+
+Joint Probability Distribution
+Probability of an event occuring based on at least two random variables
+P(T = hot, W = rain) = 0.1
+Shorthand - P(hot, rain) = 0.1
+
+Distribution tables grow exponentially
+Grow at a rate of d^n
+	Where d is the number of choices per n options
+Each additional random variable doubles the amount of combinations
+
+Marginal Distrubtions are sub-tables that eliminate variables (collapsing outcomes together)
+Marginalization (summing out): Combine collapsed rows by adding
+
+Conditional Probabilities
+Wrriteen as P(X|Y), which can be read to mean "the probability that X happens GIVEN that Y has happened"
+P(x|y) = P(x, y) / P(y)
+
+Sometimes we have conditional distribution and want the join
+P(x|y) = P(x,y)/P(y) -> P(x, y) = P(x|y)P(y)
+
+P(sun | winter, hot) = 0.1/0.15?
+
+Total Probability Rule = Total of all probabilities add up to 1
+Sum Rule (marginilization) = 
+Product Rule (Joint) = 
+
+Bayes' Rule (Important for ML)
+Can rewrite P(x,y) as P(x|y)P(y) or P(y|x)P(x)
+
+Redistributing the second and thrid computations gives us
+P(x|y) = (P(y|x)/P(y))P(y)
+
+ALlows us to build conditional from its reverse
+Often computing one conditional is tricky, but the other one is simple
+
+Causal Inference with Bayes Rule
+P(Cause|Effect) = (P(Effect|Cause)P(Cause))/P(Effect)
+
+Expectation of Random Variables (Important concept for ML)
+
+What is probability of random variable X
+	Notation: E(x)
+Expected value is its average value, weighted by the probability distribution over inputs
+Example 1: What is the expectation for X, the number of heads
+	Probability of heads = 0.75
+	Probability of two heads = 0.25
+	Probability of one head = 0.5
+	Probability of no heads = 0.25
+What is expectation for X
+1/4*2+1/2*1+1/4*0 = 1
+
+This means you are expected, when flipping coins, to get one head and one tails
+
+Traffic on free way
+	Random variable T = whether there's traffic
+	Outcomes: T in {none, light, heavy}
+	L(T) = time to the airport
+	L(none = 20), L(light) = 30, L(heavy) = 60
+	P(T) = {none: 0.25, light: 0.5, heavy: 0.25}
+
+What is expected driving time?
+E(L(T)) = 0.25*25 + 0.5*30 + 0.25*60 = 35
+
+
+Counting
+
