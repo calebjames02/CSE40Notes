@@ -1,0 +1,37 @@
+import numpy
+import pandas
+
+covid_data = pandas.read_csv('synthetic_covid_data.csv', index_col = 'id')
+
+covid_data['infected']
+Prints all of the data in the column infected
+
+covid_data['infected', 'symptomatic']
+Prints all of the data for the columns infected and symptomatic
+
+Columns can be accessed by doing dataframe[column_name]
+
+Row Selection
+covid_data[covid_data['titer'] == 32]
+Prints each row where the titer value is equal to 32
+	This means all the columns will print, and the titer value will be 32
+
+It can get more complicated as well
+covid_data[(covid_data['symptomatic'] is False) & (covid_data['titer'] > 40)]
+
+Creating a Dataframe
+test_frame = pandas.DataFrame(test_data)
+
+Adding columns
+some_frame['column_name] = [data]
+
+Removing Columns
+old_column = test_frame.pop("Column Name")
+Old_column contains the removed column from test_frame
+
+Concatenating Frames
+new_frame = pandas.concat([test_frame, additional_frame], ignore_index = True)
+	ignore_index = True makes it so the row numbers stay the same
+
+How to get column names
+covid_data.columns

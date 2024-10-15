@@ -1,0 +1,12 @@
+Activate virtual environment
+source cse40_venv/bin/activate
+
+Autograder commands
+Submit
+python3 -m autograder.run.submit assignment.ipynb
+
+Check previous scores
+python3 -m autograder.run.history
+
+Get previous grading report
+python3 -m autograder.run.peek

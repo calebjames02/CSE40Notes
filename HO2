@@ -1,0 +1,75 @@
+Regexes
+Basic uses
+# The regex 'foo' matches the word 'foo' in the target.
+target = "What is 'foo bar'?"
+regex = 'foo'
+print(re.search(regex, target))
+
+# The regex 'dog' matches 'dogs'.
+target = "dogs, cats, lizards"
+regex = 'dog'
+print(re.search(regex, target))
+
+# Numbers are fine too.
+target = "0123456789"
+regex = '45'
+print(re.search(regex, target))
+
+# The entire target string can be matched.
+target = "This string is a regex"
+regex = "This string is a regex"
+print(re.search(regex, target))
+
+# Here we do not match, and None is returned from re.search().
+target = "abc"
+regex = "123"
+print(re.search(regex, target))
+
+How to match a bunch of things
+    for match_value in match_list:
+        match = re.search(regex, match_value)
+        if (match is None):
+            errors.append("Error: Failed to match '%s'." % (match_value))
+    
+    for nomatch_value in nomatch_list:
+        match = re.search(regex, nomatch_value)
+        if (match is not None):
+            errors.append("Error: Incorrectly matched '%s'." % (nomatch_value))
+
+Basic Regex
+regex = r'cat'
+	Searches strings for the word cat, can be anywhere in the string as long as all of the characters are in that order
+
+\d = Digit
+\D = Non digit
+\w = a-z, A-Z, 0-9, _
+\W = Not the above
+\s = Whitespace
+\S = Not whitespace
+. = Any character excepta  newline
+\. = A literal period
+'^stuff$' = Ensures the first and last character of a matching string are the first and last character of the regex
+[abc] = Looks for 'a', 'b', 'c'
+[^abc] = Looks for not 'a', 'b', 'c'
+\d == [0-9]
+\D == [^0-9]
+\w == [a-zA-Z0-9_]
+\W == [^a-zA-Z0-9_]
+\s == [ \t\n\r\f\v]
+\S == [^ \t\n\r\f\v]
+.{4} = Looks for four of any character
+\b'dog'\b = Word boundary, like anchors but for a single word
+	Only match words that start and end with the characters inside the \b's
+{x, y} = There can be between x and y number of a specified character
+? = {0, 1}
+* = {0, }
++ = {1, }
+\$1(,000)* can match "$1", "$1,000", "$1,000,000" - The dollar sign needs to be escaped
+(either|or) = Will match 'either' or 'or'
+("|')foo\1 will match "foo" and 'foo' (note the order of quotes), but not "foo'. So only correctly quoted strings get matched.
+
+regex = r'^.*(\d{3})\D*(\d{3})\D*(\d{4}).*$'
+replacement = r'\1\2\3'
+target = "Call me back at (555) 123-4567, thanks."
+print(re.sub(regex, replacement, target))
+Result: 5551234567
