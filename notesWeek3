@@ -104,5 +104,116 @@ What is expected driving time?
 E(L(T)) = 0.25*25 + 0.5*30 + 0.25*60 = 35
 
 
-Counting
+10/17/24
+Counting (Combinatorics)
 
+Counting with Replacement
+Suppose you are taking a break and listen to 3 songs (n)
+You 5 songs on your device (k)
+Repeated songs are allowed
+5^3
+General formula: k^n
+This gets big really fast
+
+Counting permutations
+Suppose you are taking 3 classes
+Each day, you want to spend time reviewing each class
+How many different orderings are there for your review sessions
+6
+A permutation is a choice of k things from a set of n things without replacement and where the order matters
+General formula: (n!)/(n-k)!
+
+Suppose you are takign 5 classes
+Every day you want to spend time reviewing 3 classes
+How many different session ordering possibilities are there?
+(5!)/(5-3)! = 60
+The denominator cancels out the lower digits of the factorial so you are only left with the higher digits
+The above example ends up being 5!/2! or just 5*4*3
+
+Combination
+Order does not matter
+General formula
+(n!)/((n-k)!(k!))
+
+Counting with replacement: Choice of kk things n times
+Perumtation: Choice of k things from a set of n things without replacement and where the order matters
+Combination: Choice of k things from a set of n things without replacement and where the order doesn't matter
+
+Pattern #1: Counting + Uniform Distribution = Probability
+Let X be the set of all possible outcomes and x is an element of X
+The size of X is denoted |X|
+Then for a uniform distribution (all outcomes are equally probable), the probability of x is just 1 / |X|
+That is, P(X) = 1 / |X|
+Deck of cards = 1 / 52
+D12 = 1 / 12
+
+
+Module 4
+Independence
+Two events are independent if knowing one of them happened doesn't change the probability of the the other happening
+Two approaches to reason about independence
+	Using knowledge about the world and common sense
+	Using data
+As MLer it is important to be able to use both
+
+The probability that a fair coin shows heads after being flipped is 1/2
+If we knew the day was Tuesday? Does the change the probability of getting heads? Obviously not
+
+Consider a six-sided die
+Let E be the event that the die lands on an even-numbered side
+Let T be the event that the die lands on a 3
+If we know that E happened, does that change the probability of T
+T is now impossible
+This is the extreme case, where the events are mutually exclusive. Only one of the events can happen at a given time
+
+Two random variables X and Y are independent if P(X|Y) = P(X) and P(Y|X) = P(Y)
+Method #1 checkign for independence is by checking 
+
+
+If two random variables X and Y are independent then:
+P(X,Y) = P(X)P(Y)
+NOrmally
+P(X,Y) = P(X|Y)P(Y)
+The joint distribution factors into a product of two simple ones
+
+Why is this important
+Reason #1: Conditional Probability for Classification
+Suppose Y is the output of your classification algorithm (the label)
+Suppose X1, X2, ... Xn are features (the dtaa, X)
+Many machine learnign algorithms will output the conditional probability of label given the features
+P(Y|X1, X2, ... Xn)
+If you find out that a feature is independent just get rid of it from that label
+	Doesn't provide any useful data
+
+If two events are independent we can find odds of future events more easily
+For coin flips we can just multiply the odds of getting heads by itself over and over for future odds
+
+Reason #3: Probabilistic reasoning
+Inference: Given a join distribution, we can reason about unobserved variables given observations (evidence)
+P(Xq|x_e_1,...x_e_k)
+Called a posterior distribution
+
+Reason #4: Bayesian Reasoning for Hypothesis Selection
+Suppose H is our hypothesis and D is our data
+Suppose that we have a prior distribution over the hypotheses, P(H)
+Question: Which H should we choose?
+P(H|E) = (P(E|H)P(H))/P(E)
+
+
+Often independence is too strong, and we must combine notions of conditional probability and independence to introduce conditional independence
+Unconditional (absolute) independence is sometimes too strong
+Conditional independence is a more basic and robust form of knowledge about uncertain environments
+X and Y are conditionally indepnednent given Z, if:
+P(X|Y, Z) = P(X|Z)
+P(X|Y, Z) = P(X|Z)P(Y|Z) - Either option is valid
+
+P(catch | toothache, cavity) = P(catch | cavity)
+Irrelevant to find out if you have a toothache that will cause a dentist probe to catch if you already know you have a cavity
+Catch is conditionally independent of toothache given cavity
+
+Conditional Dependence
+Are battery and gas independent yes
+However, if I know the car didn't start, the the probability that the battery is dead DOES depend on whether the gas tank is empty
+Battery and Gas are NOT conditionally independent given Start
+Both Battery and Gas are causes of Start, if we know that the effect happened or didn't happen, and we know some causes did or didn't happen, that impacts the probability of alternates causes
+This is called explaining away
