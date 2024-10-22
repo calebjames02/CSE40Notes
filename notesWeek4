@@ -1,0 +1,99 @@
+10/22/24
+Review
+If X and Y are independent, then
+P(X,Y) = P(X)P(Y)
+
+Conditional independence
+X and Y are conditionally independent given Z, if:
+P(X|Y, Z) = P(X|Z) or P(X, Y|Z) = P(X|Z)P(Y|Z)
+
+Cavity, Tootache, Catch
+Knowing you have a toothache or catch makes it more likely the other will happen, so not independent
+If I have a cavity, probability the probe catches on it doesn't depend on whether I have a tootache
+P(catch | tootache, cavity) = P(catch|cavity)
+
+
+Sometimes things start off as independent but they are not conditionally independent
+Conditional dependence
+P(Battery, Gas, Start)
+Are battery and gas independent. Yes.
+However if car doesn't start, probability the battery is dead DOES depend on if gas tank is empty
+Battery and Gas are NOT conditionally independent given Start
+
+
+Cause and Effect
+Medical Diagnosis and Causality
+What is the best way to predict whether someone is likely to have a heart attack?
+	Whether they take blood thinners?
+	Does that mean blood thinners cause heart attacks?
+		No
+		Patients who are high risk tend to take blood thinners (which reduces their risk by a bit)
+		Patients who are low risk do not
+		Patients who take blood thinners have more heart attacks than those who don't so it appears as if the blood thinners cause heart attacks when they actually reduce the risk for those patients
+
+Study said chocolate consumption lowered risk of heart disease
+Is there any relation between chocolate consumption and heart disease?
+
+P(Cardiovascular disease | Chocolate) does not equal P(Cardiovasucular Disease | not Chocolate)
+There is a correlation
+
+What is correlation?
+	Tendency for two values or variables to change together, in either the same or the opposite way
+Correlation is any statistical relationship, whether causual or not, between two random variables
+	May indicate any type of association
+	In statistics, usually refers to the degree to which a pair of variables are linearly related
+Super useful because they can be indicate a predictive relationship that can be exploited in practice
+
+Does chocolate consumption lead to a reduction in heart disease? (Causuality)
+This question is often hard to answer
+"The study doesn't prove a cause-and-effect relationship between chocolate and reduced risk of heart disease and stroke"
+
+Causality
+Definition: Influence by which one event, process, state, or object (a cause) contributes to the production of another event, process, state, or object (an effect) where the cause is partly responsible for the effect, and the effect 
+is partly dependent on the cause. 
+In general a process has many causes, which are also called causal factors
+An effect can in turn be a cause of, or causal factor for, many other effects, which all lie in the future
+
+What is causual manipulation?
+"Causation implies that by varying one factor, I can make another vary"
+
+Randomized Controlled Trial (RCT)
+In a RCT, a group of subjects is randomlypartitionted into the control group and a treatment group
+Participants do not know which group they were assigned, and heither do the people administering the trial (double-blind design)
+Treatment group receives treament, control group received placebo
+An outcome variable is measured for all subjects
+
+Trying to make it so that in the experiment every single variable is the same except one variable, which is the one you control to see what happens
+
+Something similar that is commonly used is A/B testing
+A way to compare two versions of something to figure out which performs better
+	Often associated with websites and apps
+Started in 1920s with farmers, wondering what would happen if they put more fertilizer on land
+
+Why randomized trials can be hard
+Might be physicall or legally impossible, too costly, too dangerous
+Experimental setting may be random in theory, true randomness can be very hard to achieve in practice
+Many ethical and moral issues involved: for example, whether effective treatment may be withheld from the control group
+	Generally give the best treatment currently available to control group rather than just giving them nothing
+In some settings hard to make a placebo for it, how to realistically fake a surgery
+Recruitment of participants to a particular trial may be too difficult
+Too few people might have a certain disease and be available for investigation
+
+If treatment and control groups have systematic difference other than treatment, then it might be difficult to identify causality
+Such differences are often present in observational studies
+When they lead researchers astray, they are called confounding factors
+
+
+Correlation vs Causation and Confounders
+Correlation
+If X and Y are positively correlated, then observing high X means we shoulds ee high Y
+
+Causation
+If X and Y are causally connected, then if I manipulate the value of X, keeping everything else concstant, the value of Y will change
+
+Confounder
+Correlation is often due to confounding latent variable that is a hidden cause of both X and Y
+
+Ice cream sales are positively correlated
+	Shut down ice cream stores and crime should go down right?
+It turns out both of thse go up in the summer
