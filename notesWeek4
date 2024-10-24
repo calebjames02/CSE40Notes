@@ -97,3 +97,129 @@ Correlation is often due to confounding latent variable that is a hidden cause o
 Ice cream sales are positively correlated
 	Shut down ice cream stores and crime should go down right?
 It turns out both of thse go up in the summer
+
+
+10/24/24
+Biased Data (revisited)
+Very important skill to develop as machine learner to be able to know if data might be flawed
+
+Selection bias
+OCcurs when there are systematic differences between subsets of data, such that the subset is not representative of overall population
+In clinical trials this can happen at multiple stages
+In observational data, there is very likely some selection bias, and it is extremely important to think through this aspect carefully
+Thinking about underlying causal process often helps one recognize when there may be selection bias
+
+Selection Bias Types
+1. Sampling Bias
+	Caused by non-random sampling of population
+	When this bias occurs, sample attributes are systematically different from actual population values
+	Produces a distorted view of a population
+	Can occur when some subsets are excluded from research sample for one reason or the other
+		Leads to imbalanced representation of the different subgroups in the sample population
+	Ensuring data is randomly sampled is most effective strategy to avoid this
+		This is imppractical in many cases
+		Important to be aware that convience, using observational data rather than randomly sampled data, might exclude some variables from the systematic investigation
+2. Exclusion Bias
+	Happens when researcher intentionally removes some subgroups from the sample population
+3. Attrition Bias
+	Happens when some research participants exit the study while it's still ongoing
+	If this happens differentially for different subpopulations, this affects the quality of the outcomes arrived at in the end
+
+Correlation may be an indication of potential causation, but it does not guarantee that is the case
+
+
+Module 5: Data Processing, Warngling, and Manipulation
+Last module was about math or science of ML
+This module is art of ML
+
+Overview of challenges
+Attribute value ambiguity
+Values can be represented in ambiguous ways
+	Enter the color of your eyes: Brown, brown, browne, brownish, dark brown, greenish brown
+	Numbers: 25%, 0.25, 25/100]
+	Unknown value: null, NaN, "", "N/A", "unknown", 0, -1, -3, -9
+Name ambiguity
+	Michael Jordan is a famous basketball player, but he isn't the only person named Michael Jordan
+	Happens when one string corresponds to more than one thing
+Data entry errors
+Missing values
+Changing attributes
+	If people enter addresses in database and they move, need to updated address but how does that happen
+Data Formatting
+	Multiple ways to write the same date
+Abbrevations / Data Truncation
+	What kind of abbreviations do people use when entering data
+
+Need to clean data to make sure data types are the same, can't work with data of different data types
+
+String Encoding
+Bit-level representation of strings
+ASCII was used back in the day, only 128 possible characters
+UTF-8 is variable-length character capable of encoding all 1,1112,064 valid characters using one to four bytes
+	Backwards compatible with UTF-8
+UTF-8 is more common and should be used by default
+
+File Formats
+Human-readable
+Excel - Theoretically also machine readable but has a lot of edge cases
+PDF - Easy for humans to read, hard to transcribe data
+Word
+
+Machine-Readable
+Comma-seperated values (CSV) - Most basic type, also TSV (tab seperated)
+Extensible Markup Language (XML) - Markup language for storing and transporting data; defined by World Wide Web Consortium
+JavaScript Object Notation (JSON) - Clean, easy to parse, most commonly used format
+
+Transcribing from human readable to machine readable data can be a pain
+Try to avoid if you can
+
+
+Data Cleaning Process
+Well known data processing phrase: "Garbage in, garbage out"
+Means your insight, analysis, and predictions are only as good as the data you're using to get them
+
+An ideal, high-quality data set is: accurate, complete, consistent, relevant, valid, timely, and uniform
+How to get high quality data?
+	Gather it well
+	Fix it as best as you can
+
+Data Cleaning Process
+Import data, merge data sets, rebuild missing data, standardization, normalization, deduplication, verification & enrichment, export data
+Other orders of doing this too
+
+Duplicates and Irrelevent Data
+Remove duplicates
+	Duplicate records can appear for various reasons (data entry erros, merging multiple data sources, multiple patient visits, name ambiquity)
+	Important to understand when duplicates make sense versus when they are errors and need to be removed (or collapsed/combined)
+Remove irrelevant data
+	Previously collected data often includes observations aren't relevent to current problem (too old, refers to diff subpopulation, doesn't satisfy constraints of particular investigation)
+
+Identifying and Repairing Incorrect data
+Understanding when data is incorrect (and how to fix it) often requires domain knowledge or talking with domain experts
+Inspecting data is important
+height
+Does value of -1.0 or 8.0 ft make sense? No
+
+Structural Errors
+Refers to a wide variety of formatting and naming inconsistences that need to be addressed in order for ML algorithms to work correctly
+When data is multi-relational, there are often structural integrity constraints that must be checked
+	In this example might want to make sure every student has at least one major
+
+Missing Data
+Strategies:
+	Drop data that has missing values
+	Data imputation: Replace missing values with average feature value (mean or mode)
+		Data interpolation: Assume functional form (e.g. linear) and use appropriate method (e.g. linear regression)
+Important issue: missing data mechanisms
+
+Missing data mechanisms
+Missing Completely at Random (MCAR)
+	Means there is no relationship between missingness of data and any values, observed or missing
+	Missing values are random subset of data
+	Nothing systematic that makes some data more likely to be missing than others
+Missing at Random (MAR)
+	Systematic relationship between the propensity of the missing values and the observed data, but not the missing data
+	Whether observation is missing has nothing to do with missing values, but it does have to do with the values of an individual's observed variables
+Missing Not at Random (MNAR)
+	Means there is a relationship between the propensity of a value to be missing and its value
+	For example, older people may be less likely to report their age, or people with lower education levels may be more likely to omit the education level field
