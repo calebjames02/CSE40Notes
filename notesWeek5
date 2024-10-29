@@ -1,0 +1,126 @@
+10/29/24
+Missing at random: Depends on the data from another column if a different value is missing
+Missing not an random: The value that is missing depends on the actual value
+
+Identify and review outliers
+Outliers might be errors that we want to exclude or an anomaly that we don't want to include in our analysis
+But at other times they can reveal importnat insights into special cases in our data that we may not otherwise notice
+No set rule for what hmakes an outlier
+Common methods use either domain knowledge or a statistical test
+
+Sometimes, the typical ranges of a value are known
+	Blood pressure
+	In this case, "outliers", defined by existing knolwedge that established normal range.
+	If standard ranges can be identified, then observations that fall outside this range may be worth additional investigation
+
+Statistical Indicators
+Find some way to measure "center" of data
+2 methods used for this:
+1. Distance from the mean in standard deviations
+2. Distance from the interquartile range by a multiple of the interquartile range
+
+Standardize and Normalize Data
+Two most common ways to rerepresent data, this works for numeric data
+
+Standardizing
+	When you have data that goes across a range of values
+		Decide to rerepresent that as a value between 0 and 1 or maybe between -1 and 1
+Rescale the range of values and convert variance to a standard normal distribution
+x' = (x - mu) / sigma
+mu is mean of feature values
+sigma is standard deviation
+
+Normalizing
+Applied to change values of numeric columns in dataset to use a common scale
+Typically done when features in dataset have different ranges
+Common situation in real world: one feature might be fractional and range between zero and one, and another might range between zero and a thousand
+If task is prediction through linear progression, the latter feature will influence result more due to its larger value while not necessarily the more important predictor
+Min-max normalizationf or feature x:
+x' = (x - min)/(max - min)
+
+Re-represent data (feature engineering)
+Much fancier than standardizing and normalizing
+
+Good because
+	Having informative features leads to best models
+	Having fewer features is good because
+		Model/data will be smaller, more computationally efficient
+		Less likely to overfit data
+	Having more bad/irrelevant features is bad because
+		Computationally inefficient
+		Irrelevant features may introduce noise into the model
+		More likely to overfit data due to randomness
+
+Feature Transformation
+Data often represented in form that will not lead to effective learning
+Feature transformation refers to set of methods for transforming existing data into a new representation that will lead to more effective learning
+Text -> numeric: One-hot encoding
+Numeric -> categorical: binning
+Many categories -> fewer categories: grouping
+
+One-hot encoding
+Many ML models work better with numeric features rather than textual features
+One common way to convert text features to numeric features is called 'one hot encoding'
+Convert or transform categorical feature having string labels into K numerical features in such a manner that value of oue out of K features is 1 and value of rest (K-1) features is 0
+
+Binning / discretization
+Sometimes you want to go the other way, to turn numeric into categorical
+	Reduces number of possible values
+	Groups similar objects together
+Exact measurements of a tennis court might not matter much for property prices: relevant info is existence of tennis court
+REplace with categorical: true/false or "small", "medium", or "large"
+Built in functions
+	numpy.ndarray -> numpy.digitize()
+	pandas -> pandas.cut()
+
+Binning can reduce effective dimensionality of learning by grouping together similar values
+Some algorithms don't handle continuous/numeric data well (or at all)
+Poor choices of bin boundaries can mask important differences
+Finding the "right" bins is hard
+Binning numerical values creates step functions from continuous data, and can introduce or magnify bias at boundaries
+
+Grouping
+Sometimes categorical feature can be very high-dimensional (large number of different values in a data set)
+	For example US states, book title, university attended
+These many-valued features are hard to use because each value may be associated with very small subset of data
+Solution: Group similar values together
+Methods:
+	Use domain knowledge (geographical regions; title -> genre assocations, university types)
+	Use clustering methods (co-clustering with class or other features in data set)
+	Use wrapper methods (group, then learn, then re-group using feedback signal from learning)
+
+Feature Selection
+Essential to identify which variables are most relevant to hypothesis
+Preserving features that don't correlate strongly with output value can derail a model's accuracy
+You can think of selecting features as eliminating columsn in your data that you don't use
+Techniques
+	Manual inspection
+	Automatic techniques
+		Filter based: Use specific metric to filter features
+		Wrapper-based: Treat selection of set of features as
+
+Filter-Based Feature Selection
+Pearson Correlation Coefficient
+Most common way of measuring linear correlation
+Number between -1 and 1 that measures strength and direction of relationship between two variables
+Measures covariance of two sets of data
+r = (sum(x-xbar)(y-ybar))/sqrt(sum(x-xbar)^2*sum(y-ybar)^2)
+Compute absolute value of Pearson correlation and keep features that have highest strength of correlation
+
+Chi-Squared
+Use a statistical test, to test how likely variables are to be indepndent, given observations that we used to estimate probabilities
+Oi = # of observations in class i
+Ei = # of expected observations in class i if there was no relationship between feature and target
+chi squared = sum of (Oi-Ei)^2/(Ei)
+
+Feature Construction
+Enriches data by adding derives features
+Can involve mapping a feature into a new feature using a fucntion like log, or creating a new feature from multiple features using multiplication or addition
+Useful in data analysis pipeline to capture relevant relationships
+
+Row Compression
+Sometimes it makes sense to reduce numbers of rows in data by merging two or more
+
+Joining data
+Another approach to feature construction
+Combining data from columns of two (or more) different data tables
