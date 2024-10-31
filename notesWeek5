@@ -124,3 +124,23 @@ Sometimes it makes sense to reduce numbers of rows in data by merging two or mor
 Joining data
 Another approach to feature construction
 Combining data from columns of two (or more) different data tables
+
+
+10/31/24
+Norm is distance measure in vector space that satisfies certain properties
+L1-Norm (Manhattan distance):
+	Sum of absolute values of individual feature values
+L2-Norm (Euclidead Distance):
+	Square root of the sum of the squares of each feature value
+
+Dot Product:
+X*Y = sum of xi*yi
+Just multiply across and add
+
+x = numpy.array([1, 2, 3])
+y = numpy.array([4, 5, 6])
+numpy.dot(x, y)
+Output 32
+
+Vector Addition
+Add up each corresponding term of the vector and make that the value for that spot in the vector
