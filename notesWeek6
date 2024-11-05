@@ -1,0 +1,80 @@
+11/5/24
+For adding matrices, they need to have same # of rows and columns
+Matrix multiplication: Each ij entry is the dot product of row i and column j
+	Can only be multiplied if # of columns from 1st matrix match # of rows from second matrix
+A * Identity matrix = A
+Transpose of a matrix is found by interchanging its rows into columns (or columns into rows)
+Notation is A supercript T or A^T
+A * A inverse = I (Idenityt matrix)
+	Inverse is analogous to division
+	Sometimes the inverse may not exist
+For determinant of 2x2 matrix
+a b
+c d 
+becomes
+d -b  *  1/
+-c a  * ad-bc
+
+numpy.matmul(x, y) - Matrix multiplication
+transpose(x) or numpy.transpose(x)
+numpy.identity(2) - Identity matrix of size 2
+numpy.linalg.inv(x) - Inverse
+
+
+Linear Regression
+Mathematical way to draw a "trend" line through a scatterplot
+Can be helpful in summarizing the relationship the data has
+Can be used to make predictions
+
+In linear algebra can represent line as
+y = x * B, where x = [1 x] and B = [b m]
+	The * is not multiplication, it is dot product
+	often rename b as b0 and m as b1
+with more dimensions
+x = [1 x1 x2 ... xn] B = [b0, b1, ... bn]
+
+To find best line, use optimization to find best one
+L1 loss:
+Absolute value of difference between preidction and true lebel
+L2 loss (Mean Squared Error, or Root mean Squared Error):
+Squared difference between prediction and true label
+
+Theorem: Let A be an m-n matrix and let b be a rector in R^m
+The lesat-squares solutions of Ax = b are the solutions of the matrix equivalent
+A^TAx = A^tb
+	There are built in packages in Python to do this
+
+
+Multivariate Calculus
+Calculus is used for measuring rate of change of a function.
+A function is differentiable if we can calculate the derivative at all points of input for function vars
+	Not every function is differentiable
+Calculus is often what is used to determine what is optimal and what is not
+Gradient is derivative of a function that has more than one input variable
+	Is the generalization of derivative to multivariate functions
+	Is just matrix of partial derivatives of a function
+
+Optimization
+When in mutlidimensional hypothesis space, loss function yields a gradient surface over a parameter space
+Can optimize loss function by following gradient to local or global minimum
+
+Convex Optimization
+A straight line connecting two points will never dip below the function graph
+Convex function will have single minimum
+People making machine learning algorithms will do anything to make their function convex, because it makes it a lot easier to find minimum
+Minimum occurs in a function like this once function stops decreasing
+Take derivative to find the slope, and find when the derivative is zero
+
+Non-Convex Optimization
+
+
+
+Two things change how algorithm works: staring point and learning rate
+Starting point is X0
+You will arrive at some global minimum, but the way you move (learning rate) will effect how you arrive
+Learning rate, fancy a (how big of a step you take)
+Gradient descent opeartes by calculating
+1) gradient which gives us direction of slope and
+2) calculating our step-size
+x_n+1 = xn - learning rate(gradient of function)
+New = old - learning rate * gradient
