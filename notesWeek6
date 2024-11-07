@@ -35,9 +35,9 @@ x = [1 x1 x2 ... xn] B = [b0, b1, ... bn]
 
 To find best line, use optimization to find best one
 L1 loss:
-Absolute value of difference between preidction and true lebel
+Absolute value of difference between preidction and true lebel divided by the number of elements
 L2 loss (Mean Squared Error, or Root mean Squared Error):
-Squared difference between prediction and true label
+Squared difference between prediction and true label divided by the number of elements
 
 Theorem: Let A be an m-n matrix and let b be a rector in R^m
 The lesat-squares solutions of Ax = b are the solutions of the matrix equivalent
@@ -78,3 +78,40 @@ Gradient descent opeartes by calculating
 2) calculating our step-size
 x_n+1 = xn - learning rate(gradient of function)
 New = old - learning rate * gradient
+
+
+11/7/24
+Non Convex Optimization is much harder than convex optimization
+People will try to mathematically change what they have to make it convex
+General strategy for non convex is to find local minima and keep track of which is best
+
+Decision Boundaries / Hypothesis Space
+Are a line or curve that binary classifiers use to split the input space
+Data points on one side of decision boundary are predicted to be in one class and points on other side are predicted to be in other class
+Decision boundaries don't have to be straight lines
+Hyperparameters are additional parameters that control its overall operation
+	For gradient descent, hyperparameters would be learning rate and number of steps
+Regularization methods add a term that forces the algorithm to prefer simpler models and avoid overfitting
+
+Sometimes will hold out additional data to find best settings for hyperparameters
+Cross-validation (allows a rotation of different holdout sets)
+
+scikit-learn Machine Learning Workflow
+Data preprocessing
+Model estimator
+Model evaluation
+
+scikit-learn provides dozens of built in machine learning algorithms and models called estimators and predictors
+Each predictor can be fitted to some data using its fit method and can make predictions on data using predict method
+Transformers and preprocessors change data in some way to make it more usable
+
+train_test_split helper splits a dataset into train and test sets
+
+
+Cross Entropy Loss
+Loss function that can be used to qunaitfy the difference between two probability distributions
+
+If you have a probability each point is right, multiply them all together to find overall probability the model is right
+With lots of data points, multiplying a lot of data points make the number super small
+Instead, logarithms are used
+sum the log or ln or the probabilities and make it negative at the end because the log will make things negative
