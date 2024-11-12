@@ -1,0 +1,72 @@
+11/12/24
+Class 11/20 asynchronous online
+Class 11/26 will be a guest lecture
+
+We can turn linear regression into a classifier by making a simple transformation
+sigmoid(z) = 1 / (1 + e^-z)
+Also called logit
+Connection between linear and logistic regression
+y = m * x + b
+y = 1 / (1 + e ^ -(m*x+b))
+
+X_train, X_test, y_train, y_test = train_test_split(df[['col']], df.bought_insurance,test_size = 0.1)
+
+Logistic classifer surprisingly good at fitting data
+Good idea to try it as first classifier
+
+Linear models are most commonly used ML models in practice because they are fast, cheap, and easy to interpret
+Linear models predict class using a linear equation: a bias term b plus a weighted sum of the d feature values
+Magnitude and sign of the result gives a sense of which features are important, and direction of their influence
+
+Two ways of writing weights
+d-dimensional weight vector w: {w1, ..., wd}
+and a feature vector x: {x1, ..., xd}
+
+d+1-dimensional weight vector w: {w0, w1, ..., wd} (where w0 = b)
+and an augmented feature vector x: {1, x1, ..., xd} (adding a 1 to the front of the vector)
+
+Really it is just the dot product of w * x + b
+Dot product of weight vector and feature vector plus the bias
+
+Goal of learning is to find best weight vector (the best parameters)
+
+Generalized Linear Models
+We can make our linear models more general by defining them as a function f of out linear equation w * x
+hypothesis h(x) = f(w * x)
+	With logiestic regression f can be logistic function, but it can be even simpler
+argmin loss total = Loss function(X, Y, theta) + alpha * R(theta)
+	alpha * R(theta) - Prefers simpler solutions
+
+Loss Functions
+0-1 Loss
+Small changes in w and b can lead to big changes in the loss value
+0-1 loss in non-smooth, non-convex
+Can't take derivative of 0-1 loss function
+
+Use other loss function to approximate 0-1 loss
+	Hinge, log, and exponential loss
+	Ensure convex upper bound on 0-1 loss to make sure you can take a derivative
+
+
+Regularizer Term
+Ideally, we want most weightes wi to be (near) zero so that the prediction only depends on a small number of features
+We can use distance metrics (also called norms) to measure effect size of weight vector / parameters
+	Notation: ||w|| or ||theta||
+L1-Norm is sum of absolute values of the vector
+	Advantages: convex, smooth, easy to optimize
+	Prefers smallest total, but doesn't prefer zeroes
+	Easier to work with
+
+L2-norm is the sum of the square root of all the squares
+	Advantages: encourages sparse weight vectors, convex (but not smooth at axis points)
+	This is able to prefer zeroes
+
+Stochasitc graident descent (SGD)
+	Simple yet efficient variant of gradient descent
+	Well-suited for linear models
+	Particularly useful when number of sample (and number of features) is very large
+	Instead of looking at all points at once, SGC chooses a random batch of data points and computes gradient over this subset
+	Working with less points is much faster and often ends up working better
+
+Quiz 56
+Pandas, missing data mechanisms, one-hot encoding, feature selection and construction, linear algebra, linear regression, calculus and derivatives, gradient descent, HO3, WA2
