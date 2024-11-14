@@ -70,3 +70,61 @@ Stochasitc graident descent (SGD)
 
 Quiz 56
 Pandas, missing data mechanisms, one-hot encoding, feature selection and construction, linear algebra, linear regression, calculus and derivatives, gradient descent, HO3, WA2
+
+
+11/14/24
+Recap Linear Models
+Cast learning as optimization problem
+Optimization objective combines two terms
+	Loss function: measures how well classifier fits training data
+	Regularizer: measures how simple classifier is
+		Get penalized for a more complex model
+
+Perceptrons
+Most likely oldest linear classifier
+A line in 2D when brought into 3D becomes a hyperplane
+y bar = sign of (w * x) - Outputs either 1 or -1 as opposed to logistic regression outputting 0 or 1
+Initially seemed promising, but it was quickly shown that perceptrons could not be trained to recognize many classes of patterns
+
+Inputs are feature values
+Each feature has a weight
+Sum is the activation
+Add bias term, feature that is always 1
+If activation is:
+	Positive, output +1
+	Negative, output -1
+
+The activation of a perceptron is just equal to the dot product of the weight vector and feature vector, which is then mapped to + or - 1
+
+Spam email example
+x = full email text
+f(x) = word feature vector, number of times free is said, number of misspellings ...
+y = spam or not
+Try to create a weight vector that when dotted with the feature vector it will result in the correct classification
+If result is wrong that add or subtract the feature vector if it is right or wrong
+weight vector = weight vector + y (-1 or 1) * feature vector
+
+This is an online algorithm, because the model is being updated as soon as an error is made
+Error-driven - Doesn't change anything unless wrong
+
+Practical Considerations
+	Order of training examples matters
+		Random is better
+	Early stopping is an option
+		Good strategy to avoid overfitting
+	Simple modifications can dramatically improve performance
+		E.g. voting or averaging
+Can the perceptron always find a hyperplane to separate positive from negative examples?
+If it is separable then you can
+Non-Separable you can not
+
+Convergence of perceptron
+Perceptron has converged if it can classify every training example correctly
+
+If the training data is separable, the perceptron will eventually converge and get every answer right
+The converge rate (maximum number of mistakes) is related to the margin or degree of separability
+
+Practical Implications
+Sensitivity to noise
+	If data is not linearly separable due to noise, no guarantee of convergence or accuracy
+Risk of overfitting mitigated by early stopping and averaging
