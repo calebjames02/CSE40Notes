@@ -1,0 +1,130 @@
+11/19/24
+Naive Bayes
+Simple idea:
+Assume all probabilities are independent
+Model relationship between each feature and class
+Use Bayes' rule to compute overall class probability
+
+Key design decisions:
+Representing probabilistic decisions for diff kinds of features
+Smoothing (using prior probabilities) to avoid overfitting
+
+Goal: compute posterior over Y, F
+Step 1: Get joion probability of Y (class) and F (evidence)
+Step 2: Get probability of evidence
+Step 3: Renormalize - In many cases this can be skipped
+
+Inference:
+	Start with bunch of conditionals, P(Y) and the P(Fi|Y) tables
+	Use standard inference to compute P(Y|F1...Fn)
+
+Estimation of local conditional probability tables:
+	P(Y) the prior over labels
+	P(Fi|Y) for each feature (evidence variable)
+	This data typically comes from training data
+
+For a number detector, for each individual pixel the conditional probability will be computed
+
+Naive Bayes for Text
+Bag-of-Words Naive Bayes
+Predict unknown class label (spam vs ham)
+Assume evidence features (words) are independent
+No longer care about order of words, just care about the words that are used
+
+Generative model
+	P(C, W1 ... Wn) + P(C) * product (P(Wi|C)) - Word at position i, not ith word in the dictionary
+
+To get prior probability of a given word
+P(ci) = #ci / N - # means count the number of times ci is seen
+P(fi|ci) = (#ci, fi) / #ci - Number of times ci appears given fi is the feature
+Probability of a word given a feature = number of times the word shows up with the given feature / number of times that feature appears
+
+One thing that can go wrong with Naive Bayes is overfitting
+If something shows up that wasn't in training data then one of the probabilities for a feature will become 0 and it will multiply everything else to make the probability 0
+
+Can't just assume probability of unseen events is zero
+Can use smoothing or regularizing to make estimates better
+
+Smoothing
+Maximum likelihood estimates:
+	P_ML(x) = count(x) / total samples
+Basic idea:
+	We have some prior expectation about parameters (e.g probability of heads)
+	Given little evidence we should skew towards prior
+	Given a lot of evidence, we should listen to data
+
+Estimation: Laplace Smoothing
+Pretend you saw every outcome k extra times
+Works with conditional probabilities
+P_LAPk(x) = (c(x) + k) / (N + k|X|)
+k is the strength of the prior
+|X| is size of outcomes of x
+	When flipping a coin you either get heads or tails, so this is 2
+
+Given H H T when flipping 3 coins
+Laplace with 0 = <2/3, 1/3>
+Laplace with 1 = <3/5, 2/5>
+Laplace with 100 = <102/203, 101/203>
+
+Common way to do laplace transform
+Just do laplace with 1
+This ensures that you have no zero probabilities
+
+
+Recap Linear Models
+General framework for binary classification
+Cast learning as an optimization problem
+Optimization objective combines two terms
+	Loss function: measures how well classifier fits training data
+	Regularizers: measures how simple classifier is
+Does not assume data is linearly separable
+
+Model Evaluation
+How do we choose the best model?
+
+Model Complexity
+	Simple models have fewer paraters ... and have less complex decision boundaries ... but may not be able to fit data as well
+Models from least to most complex
+	average/mode - Kinda good to use this as a baseline. If your model can't beat this, it is not good
+	linear models
+	decision trees
+	nearest neighbor
+	naive bayes
+	neural networks
+
+Overfitting
+Consider a hypothesis h and its:
+Error ate over training data error_train(h)
+True error rate over all data error_true(h)
+
+We say h overfits the training data if error_train(h) < error_true(h)
+Amount of overfitting = error_true(h) - error_train(h)
+Problem: we don't know error_true(h)
+Solution
+	We set aside a test set
+		Some examples that will be used for evaluation
+	Don't look at it during training
+	After learning a model we calculate error_test(h)
+
+We have two kinds of unknowns
+Parameters: weight in model, decision tree splits, etc.
+Hyperparameters: like amount of regularization to do: k, etc.
+
+How to learn?
+Learn parameters from training data
+Tune hyperparameters on diff data
+For each value of hyperparameters train on held out data
+Choose best value to do final test on data
+
+There is randomness in how test set is selected, what if you get unlucky and particular test set doesn't work well for certain model even though across total population it is better
+Good to do random selection of data, because it may have been sorted ahead of time
+
+K-Fold Cross Validation
+Splite data into k equally sized splits
+For each split, use it as test data, while using other k-1 splits as training data
+Compute average and standard deviation of performance metric (accuracy, F1, etc)
+
+Can compare different models doing this, as long as they are using the same splits
+Most common method used is called a paired t-test
+Another way to do this is with a box plot
+	Shows minimum, first quartile, median, third quartile, and maximum
