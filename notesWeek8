@@ -128,3 +128,102 @@ Can compare different models doing this, as long as they are using the same spli
 Most common method used is called a paired t-test
 Another way to do this is with a box plot
 	Shows minimum, first quartile, median, third quartile, and maximum
+
+
+11/21/24
+Nearest Neighbor
+	Store all training examples
+	Classify new examples based on finding most similar training examples
+
+Two approaches to learning
+Eager Learning
+	Learn/Train
+		Induce an abstract model from data
+	Test/Predict/Classify
+		Apply learned model to new data
+Lazy Learn
+	Learn
+		Just store data in memory
+	Test/Predict/Classify
+		Compare new data to stored data
+	Can represent complex hypothesis space
+	Classification can be very slow
+
+Components of k-NN classifier
+Distance metric
+	How do we measure similarity between instances
+K hyperparameter
+	How many other data points should you look at
+	Affects complexity of hypothesis space
+	If k = 1 then every training example has its own neighborhood
+	If k = N, entire feature space is one neighborhood - Averaging more and more
+
+Distance metrics
+L2 distance - Euclidean distance
+	Circles
+L1 distance - manhattan distance
+	Squares tilted at 45 degree angle
+L infinity distance - chebyshev distance
+	Squares
+
+Default: all neighors have equal weight
+Extension: weight neighbors by (inverse) distance
+
+Epsilon Ball Nearest Neighbors
+Instead of specifying how many neighbors to consider, just takes all neighbors that are within a certain distance
+
+
+Decision Trees
+Inputs - Discrete or continuous
+Outputs - discrete (classification) or continuous (regression)
+Easier for humans to look at and understand
+
+Hypothesis space grows for these very quickly if trying to represent all possible outcomes
+Simpler is better, generally for tree - Ockham's razor
+	Avoids over-fitting
+
+Greedy Algorithms
+Like many NP-complete problems we can get pretty good solutions
+Most decision tree learning is greedy
+Start out and make best local decisions and keep trying to make best local decisions
+Do this by top-down decision tree learning
+
+if all labels are same
+	return leaf node for that label
+else
+	let f be best feature for splitting
+	left = BuildDecisionTree(data, with f=0, labels with f=0)
+	right = BuildDecisionTree(data with f=1, labels with f=1)
+	return Tree(f, left, right)
+
+Does this always terminate? - Yes
+
+Other base cases
+All data have same label
+	Return that label
+No examples left
+	Return majority label of all data (mode of data)
+No further splits possible
+	Return majority label of passed data
+Good attribute splits the examples into subsets that are (ideally) "all positive" or "all negative"
+
+How to measure information?
+	Information theory
+
+Information theory
+	Quantification of information
+Entropy - H(Y)
+In information theory, entropy is measure of uncertainty associated with random value
+Quantifies, using expected value, information contained in a message in bits
+Measure of average information content one is missing when one does not know the value of the random variable
+One interpretation of entropy is the expected number of bits needed to encode Y or number of questiones needed to guess Y
+
+Information Gain
+To quantify predictiveness of attribute X for Y, we consider the conditional entropy, or expected number of bits needed to enocde Y or questiones needed to guess Y, knowing X
+
+Random Forests
+Makes multiple decision trees and combines the total results
+Good model for large number of features
+Generally provide high accuracy
+Not easily interpretable
+Computationally intensive for large datasets
