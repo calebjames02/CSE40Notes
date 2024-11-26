@@ -1,0 +1,7 @@
+11/26/24
+Useful data munging command line commands
+grep, find, sed, xargs, sort, uniq
+grep - Finding text inside of a file
+find - Finding files themselves
+sed - Changing text strings
+xargs - Reordering things
