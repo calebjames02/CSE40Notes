@@ -1,0 +1,15 @@
+12/3/24
+Neural Networks
+Embed lots of perceptron-like nodes in more complex networks
+Allows us to learn non linear functions
+Use backpropagation feedback to learn parameters; use forward propagation to make predictions
+Each node has a input function (typically summing weights), and has an activation function
+Gradient descent a type of backpropagation
+
+Data Ethics / Data dignity
+Social media and video games are designed to be addicting
+
+Three Principles from Belmont Report
+Respect for person: Participation must be completely voluntary and based on full understanding of what is involved
+Beneficence: Subjects must not be harmed by research
+Justice: Burdens and benefits of research should be shared fairly within society
