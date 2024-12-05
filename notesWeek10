@@ -13,3 +13,34 @@ Three Principles from Belmont Report
 Respect for person: Participation must be completely voluntary and based on full understanding of what is involved
 Beneficence: Subjects must not be harmed by research
 Justice: Burdens and benefits of research should be shared fairly within society
+
+12/5/24
+Review Bayes theorem and finding conditional probabilities
+
+Bias and Fairness
+We have previously made some assumptions
+	Explicit assumptions
+		Data is drawn from same distribution well see in practice
+		Labels are observed equally frequently
+	Implicit assumptions
+		Thingwe're trying to learn is useful and good thing to learn
+		Data collected includes information about what we are trying to learn
+
+Bias is any form of skew or subselection of the data itself
+Fairness is expecting the model to not include perference or prejudice towards one group or another
+
+Recidivism (chance to commit a crime again) overpredicted for African Americans, and underpredicted for white people in a machine learning algorithm
+
+High dimensional data with not a lot of data makes it very easy for model to overfit data
+
+Accuracy measurement is under assumption that training data and test data are representative sample of population
+These almost never hold in practice
+Unseen data can test model on things it had no training data for it will likely make a mistake
+
+Statistical Fairness
+Demographic Parity (Independence)
+P(C=1|G=A)=P(C=1|G=B)
+Equalized odds - Want conditional probabilities to be the same in the case where the predicted value matches the actual value
+P(C=1|G=A,Y=y)=P(C=1|G=B,Y=y) y is in subset of {0, 1} - Checking for the value of 0 and 1
+Predictive Parity (Precision, Calibration) - Probability of true output being 1 given predicted output being 1
+P(Y=1|C=1,G=A)=P(Y=1|C=1,G=B)
